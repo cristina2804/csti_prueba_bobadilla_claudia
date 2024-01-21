@@ -1,0 +1,84 @@
+.carousel-indicators {
+    display: none !important;
+}
+
+.custom-carousel {
+    position: relative;
+}
+
+.custom-slide {
+    position: relative;
+}
+
+// .carousel-number {
+//     position: absolute;
+//     bottom: 10px;
+//     right: 10px;
+//     color: #fff;
+//     /* Color del número */
+//     font-size: 16px;
+//     /* Tamaño de fuente del número */
+// }
+
+.custom-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+    color: rgba(255, 255, 255, .5) !important;
+}
+
+.custom-indicators li {
+    display: inline-block;
+    position: relative;
+    margin: 0 5px;
+    a {
+        display: block;
+        width: 30px;
+        height: 30px;
+        color: rgba(255, 255, 255, .5);
+        background-color: transparent;
+        border: 2px solid rgba(255, 255, 255, .5);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 27.5px;
+        font-size: 13px;
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+    }
+    svg.glide__loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.custom-indicators li.active {
+    svg.glide__loader {
+        stroke: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        transform: rotate(90deg);
+        stroke-width: 20;
+        stroke-dasharray: 0, 94.25;
+        animation: revealBorder 8s ease-out forwards;
+    }
+}
+
+@keyframes revealBorder {
+    0% {
+        stroke-dasharray: 0, 94.25;
+    }
+
+    100% {
+        stroke-dasharray: 94.25, 94.25;
+    }
+}

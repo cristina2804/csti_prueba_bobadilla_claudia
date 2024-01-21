@@ -1,0 +1,29 @@
+<!-- <article class="card-product" *ngFor="let product of products"> -->
+<div class="card-product">
+    <div class="card-product-image" [class.expanded]="isExpandedImage" (mouseenter)="expandImage()" (mouseleave)="collapseImage()" >
+        <img [src]="product.images.length > 0 ? product.images[0] : null" alt="" height="50" />
+    </div>
+    <!-- <div class="card-product-header">
+        <h3 class="card-product-header-title">{{ product.title }}</h3>
+        <p>$ {{ product.price }}</p>
+    </div> -->
+
+    <div class="card-product-body">
+        <p class="brand">Marca</p>
+        <p class="title">{{ product.description }}</p>
+        <p class="price-miles-previous">9,700 Millas Benefit</p>
+        <p class="price-miles">
+            <strong>9,500</strong>
+            Millas Benefit
+        </p>
+        <p class="price">S/.200.00</p>
+        <!-- <img [src]="product.images[0]" alt="" height="50" /> -->
+    </div>
+    <!-- <div class="card-product-footer">
+        <button class="card-product-footer-button" (click)="addToCart(product)">
+            <i class="fa-solid fa-basket-shopping"></i>
+        </button>
+    </div> -->
+</div>
+    
+<!-- </article> -->
