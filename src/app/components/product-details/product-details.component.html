@@ -1,0 +1,83 @@
+<div class="container pt-4" *ngIf="producto">
+    <div class="row">
+        <div class="product-details col-8">
+            <h6 class="text-secondary">{{ producto.descripcionMarca }}</h6>
+            <h4>{{ producto.nombre }}</h4>
+            <div class="preview" *ngIf="producto.imagenes.length > 0">
+                <img class="first"
+                    [src]="'https://static.interbankbenefit.pe/public/web/images/producto/ficha-tecnica/' + imagenSelected"
+                    alt="">
+                <div class="thumbnail">
+                    <section class="article-list">
+                        <article *ngFor="let imagen of producto.imagenes" (click)="selectImage(imagen)" 
+                        style="height: 153px;" [class.active]="imagen == imagenSelected">
+                            <img alt="Thumbnail"
+                                [src]="'https://static.interbankbenefit.pe/public/web/images/producto/ficha-tecnica/' + imagen">
+                        </article>
+                    </section>
+                </div>
+            </div>
+            <h5>Especificaciones</h5>
+            <ul>
+                <li *ngFor="let item of producto.especificacionesProducto">
+                    <p>{{ item }}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="customizable col-4 px-0">
+            <div>
+                <div class="section">
+                    <div class="cantidad no-custom" ng-reflect-klass="cantidad" ng-reflect-ng-class="no-custom">
+                        <p>Cantidad</p>
+                        <div class="dropdown cantidad dynamic">
+                            <div class="form-group mb-0">
+                                <select class="form-control" [(ngModel)]="cantidadProducto" id="exampleFormControlSelect1">
+                                    <option *ngFor="let item of cantidadesProducto">{{ item }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section precio">
+                    <p>Precio
+                    </p>
+                    <p>
+                        {{ producto.precioPuntos | numberMil }} Millas Benefit<br>
+                        <span>o por S/ {{ producto.precioCatalogo | numberDecimal }}</span>
+                    </p>
+                </div>
+                <div class="section">
+                    <div class="buttons justify-content-between">
+                        <div>
+                            <button type="button" class="btn btn-outline-primary btn-lg">Agregar a carrito</button>
+                        </div>
+                        <div class="align-right">
+                            <button class="btn btn-primary btn-lg" type="submit">Canjear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="value-proposal">
+                <li>
+                    <strong>Tipos de entrega</strong>
+                </li>
+                <li>
+                    <img alt="Shield"
+                        src="https://static.interbankbenefit.pe/public/web/static/scorpio/assets/images/ficha-producto/van@2x.png">
+                    <span>Entrega regular hasta 5 días útiles a Lima Metropolitana, y hasta 15 días útiles a provincias.</span>
+                </li>
+                <li>
+                    <img alt="Shield"
+                        src="https://static.interbankbenefit.pe/public/web/static/scorpio/assets/images/ficha-producto/rocket@2x.png">
+                    <span>Entrega express 24 horas solo para Lima Metropolitana.</span>
+                </li>
+            </ul>
+            <ul class="value-proposal">
+                <li>
+                    <img alt="Card"
+                        src="https://static.interbankbenefit.pe/public/web/static/scorpio/assets/images/ficha-producto/card@2x.png">
+                    <span>Completa las millas de tu canje pagando con tu tarjeta.</span></li>
+            </ul>
+        </div>
+    </div>
+</div>

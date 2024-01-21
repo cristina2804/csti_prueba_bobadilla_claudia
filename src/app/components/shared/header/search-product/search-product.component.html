@@ -1,0 +1,44 @@
+<div class="searchbar searchbar--icon-right searchbar--boxed" [ngClass]="{ 'searchbar--open': focusInput }">
+    <label class="searchbar__input">
+        <input class="searchbar__value" type="text" placeholder="Encuentra lo mejor en vales, productos y más"
+            [ngClass]="{'loading':isLoading}" [spellcheck]="false" (ngModelChange)="search($event)" [(ngModel)]="src"
+            (focus)="onInputFocus()" (blur)="onInputBlur()">
+        <button type="button" class="btn btn__search">
+            <i class="fa-solid fa-search"></i>
+        </button>
+    </label>
+
+    <div class="searchbar__results" *ngIf="focusInput" style="max-height: 774px; overflow: auto;">
+        <div class="searchbar__benefit">
+            <p class="searchbar__benefit-label">Buscar en</p>
+            <div class="searchbar__benefit-links">
+                <button class="button button--medium button--blue button--primary" type="button">
+                    <span class="button__text">
+                        <span>Productos</span>
+                    </span>
+                </button>
+                <button class="button button--medium button--blue button--secondary" type="button">
+                    <span class="button__text">
+                        <span>Vales y giftcards</span>
+                    </span>
+                </button>
+                <button class="button button--medium button--blue button--secondary" type="button">
+                    <span class="button__text">
+                        <span>Canje en tiendas</span>
+                    </span>
+                </button>
+                <button class="button button--secondary button--medium button--blue button--icon-right" type="button">
+                    <span class="button__text">
+                        <span>Viajes</span>
+                        <i class="button__icon icon-xs-arrow-right-2"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <a *ngFor="let item of productos" class="searchbar--result"
+            href="p/kit-asado-3-piezas-tabla-de-picar-cuchillo-8-trinche-grillcorp-29485661007" target="_self"
+            data-value="null">
+            {{ item.titulo }}
+        </a>
+    </div>
+</div>

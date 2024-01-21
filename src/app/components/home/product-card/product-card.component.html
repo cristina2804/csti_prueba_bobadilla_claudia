@@ -1,0 +1,30 @@
+<div class="card-product" (click)="toProduct(producto.keyItem)">
+    <div class="card-product-image" [class.expanded]="isExpandedImage" (mouseenter)="expandImage()"
+        (mouseleave)="collapseImage()">
+        <span class="flag-discount" *ngIf="producto.esOferta">25% DSCTO.</span>
+        <img [src]="'https://static.interbankbenefit.pe/public/web/images/producto/thumbnail' + producto.imagenOportunidad"
+            alt="" height="50" />
+    </div>
+    <!-- <div class="card-product-header">
+            <h3 class="card-product-header-title">{{ product.title }}</h3>
+            <p>$ {{ product.price }}</p>
+        </div> -->
+
+    <div class="card-product-body">
+        <p class="brand">{{ producto.descripcionMarca }}</p>
+        <p class="title">{{ producto.nombre }}</p>
+        <p class="price-miles-previous" [class.transparent]="!producto.verPrecioRegular">{{ producto.precioPuntosRegular
+            }} Millas Benefit</p>
+        <p class="price-miles">
+            <strong>{{ producto.formatPrecioPuntos }}</strong>
+            Millas Benefit
+        </p>
+        <p class="price">S/.{{ producto.formatPrecioCatalogo }}</p>
+        <!-- <img [src]="product.images[0]" alt="" height="50" /> -->
+    </div>
+    <!-- <div class="card-product-footer">
+            <button class="card-product-footer-button" (click)="addToCart(product)">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </button>
+        </div> -->
+</div>

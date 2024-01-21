@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-// @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css");
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 @import './assets/variables';
@@ -40,7 +40,103 @@ b, strong {
     visibility: hidden !important;
 }
 
-// Agrega estilos responsivos si es necesario
-@media (max-width: 768px) {
-    // Estilos responsivos
+a {
+    color: $primaryBlue1;
+    text-decoration: underline;
+}
+
+.button {
+    border: none;
+    outline: none;
+    appearance: none;
+    background-color: transparent;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color $fast, border-color $fast;
+    &--icon-right {
+        margin-right: 0;
+    }
+    &--secondary.button--blue {
+        border-color: $primaryBlue1;
+        color: $primaryBlue1;
+        span {
+            color: $primaryBlue1;
+        }
+    }
+    &--primary.button--blue {
+        background-color: $primaryBlue1;
+        span {
+            color: white;
+        }
+    }
+    
+}
+
+.button--medium {
+    height: 48px;
+    font-size: 14px;
+}
+
+.align-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.align-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px -2px;
+    border-bottom: 0px;
+}
+
+.container {
+    padding: 0;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    margin-left: 20px;
+    padding-left: 5px;
+    p {
+        font-weight: 300;
+        line-height: 24px;
+        color: #404040;
+    }
+}
+
+.btn-lg {
+    padding: .5rem 1rem;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: $primaryBlue1;
+    border-color: $primaryBlue1;
+    &:hover {
+        background-color: $primaryBlue0;
+        border-color: $primaryBlue0;
+    }
+}
+
+.btn-outline-primary {
+    border-color: $primaryBlue1;
+    color: $primaryBlue1;
+    &:hover {
+        background-color: #fff;
+        border-color: $primaryBlue0;
+        color: $primaryBlue0;
+    }
 }

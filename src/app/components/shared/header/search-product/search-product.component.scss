@@ -1,0 +1,108 @@
+@import 'src/assets/variables.scss';
+
+.searchbar {
+    * {
+        box-sizing: border-box;
+    }
+    box-sizing: border-box;
+    color: $grayText;
+    position: relative;
+    &--boxed &__input {
+        border-color: $primaryBlue1;
+    }
+    &--open &__input {
+        border-radius: 4px 4px 0 0;
+        border-width: 0.15rem;
+    }
+    &__benefit {
+        padding: 15px;
+        &:not(:last-child) {
+            border-bottom: 1px solid $gray4;
+        }
+        &-links {
+            display: flex;
+            flex-wrap: wrap;
+            .button {
+                padding: 0 15px;
+            }
+        }
+        &-label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+    }
+    &__value {
+        width: 100%;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        border: none;
+        height: 46px;
+        background-color: transparent;
+        font-family: var(--fontGeometria);
+        font-weight: 500;
+        font-size: 16px;
+        color: $grayText;
+    }
+    &__input {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border: 1px solid $gray4;
+        border-radius: 4px;
+        background-color: white;
+        transition: $fast;
+        cursor: text;
+        input{
+            width: 100%;
+            border: none;
+        }
+    }
+    &__results {
+        position: absolute;
+        width: 100%;
+        background-color: white;
+        border: 1px solid $gray4;
+        top: calc(100% - 1px);
+        border-radius: 0 0 4px 4px;
+        transition: $fast;
+        box-shadow: 0 2px 4px 0 rgba(51,51,51,0.12);
+        z-index: 10;
+    }
+    &--icon-right .searchbar__value {
+        padding-left: 15px;
+    }
+    &--result {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        cursor: pointer;
+        line-height: 47px;
+        padding: 0 15px;
+        border-bottom: 1px solid $gray4;
+        font-size: 14px;
+        font-weight: 500;
+        transition: $fast;
+        color: $grayText;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+.hydrated {
+    visibility: inherit;
+}
+
+.btn__search {
+    height: 46px;
+    background-color: $primaryBlue1;
+    border-radius: 0;
+    i {
+        color: #fff;
+    }
+}

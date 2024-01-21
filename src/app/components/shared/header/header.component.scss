@@ -1,0 +1,50 @@
+@import 'src/assets/variables.scss';
+
+.navbar-auth {
+    padding: 0.25rem;
+    // display: flex;
+    // justify-content: space-between;
+    background-color: $gray4;
+    color: white;
+}
+
+.cart {
+    display: none;
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    z-index: 1;
+    position: absolute;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: 1px solid #cc1414;
+    right: 0px;
+    min-width: 40%;
+
+    app-cart {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+}
+
+.benefit-zone {
+    max-width: 1290px;
+    width: 100%;
+    padding: 20px 0px 15px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.benefit-zone>div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}

@@ -1,0 +1,26 @@
+<div class="navbar-auth text-right">
+    <div class="container">
+        <span>¡Hola! </span>
+        <span><a href="">Inicia Sesión </a></span>
+        <span>o </span>
+        <span><a href="">Registrate</a></span>
+    </div>
+</div>
+<div class="container">
+    <div class="benefit-zone">
+        <div class="row">
+            <div class="col-12 col-md-10">
+                <app-search-product></app-search-product>
+            </div>
+            <div class="col-12 col-md-2 pr-0 align-right">
+                <div class="cart" [ngClass]="{ show: viewCart }">
+                    <app-cart></app-cart>
+                </div>
+                <!-- <app-cart-shop></app-cart-shop> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cart" [ngClass]="{ show: viewCart }">
+    <app-cart></app-cart>
+</div>

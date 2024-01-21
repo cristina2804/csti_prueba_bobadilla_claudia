@@ -1,78 +1,97 @@
-:host[data-perview="4"]{
-    // flex-basis:20%;
-    // // display:flex;
-    // flex-direction: column;
-    // align-items: center;
-    // border: 1px solid #efefef;
-    // box-shadow: 0 2px 4px -2px rgba(0,0,0,0.15);
-    // // border-radius: 1rem;
-    // // padding: 1rem;
-    // margin: 0.5rem;
-
-    // display: block;
+:host[data-perview="4"] {
     width: calc(100% / 4 - 60px / 4);
-    // overflow: hidden;
-    // box-shadow: 0 2px 4px -2px rgba(0,0,0,0.15);
-    // position: relative;
 }
 
 :host[data-perview="4"] {
-/* Estilos para 4 vistas previas en una fila */
-width: calc(100% / 4 - 60px / 4);
+    /* Estilos para 4 vistas previas en una fila */
+    width: calc(100% / 4 - 60px / 4);
 }
 
 :host[data-perview="3"] {
-/* Estilos para 3 vistas previas en una fila */
-width: calc(100% / 3 - 40px / 3);
+    /* Estilos para 3 vistas previas en una fila */
+    width: calc(100% / 3 - 40px / 3);
 }
 
 :host[data-perview="2"] {
-/* Estilos para 2 vistas previas en una fila */
-width: calc(100% / 2 - 20px / 2);
+    /* Estilos para 2 vistas previas en una fila */
+    width: calc(100% / 2 - 20px / 2);
 }
 
 :host[data-perview="1"] {
-/* Estilos para 1 vista previa en una fila */
-width: calc(100% - 10px);
+    /* Estilos para 1 vista previa en una fila */
+    width: calc(100% - 10px);
 }
 
-.card-product{
+.container {
+    &-products{
+        display: flex;
+        justify-content: center;
+        // flex-direction: row;
+        flex-wrap: wrap;
+        // app-product{
+        //    display: flex;
+        //    justify-content: center;
+        //    flex-direction: row;
+        //    flex-wrap: wrap;
+        // }
+    }
+}
+
+.card-product {
     border: 1px solid #efefef;
-    box-shadow: 0 2px 4px -2px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.15);
     margin: 0.5rem;
     align-items: center;
-    // -webkit-box-shadow: 10px -1px 116px -62px rgba(160, 193, 185, 1);
-    // -moz-box-shadow: 10px -1px 116px -62px rgba(127, 136, 134);
-    &-image{
-        width: 100%;
-        // height: auto;
+    cursor: pointer;
+    &-image {
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 200px;
         position: relative;
-        padding: 20px; // 60px
-        img{
-            width: 100%;
-            height: auto; /* Mantiene la proporción original */
-            max-height: 100%; /* Establece la altura máxima en 20px si es necesario */
+        padding: 20px;
+
+        .flag-discount {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-family: 'Geometria', sans-serif;
+            color: white;
+            background-color: #EB0046;
+            line-height: 28px;
+            padding: 0 12px;
+            border-bottom-right-radius: 10px;
+            z-index: 1;
         }
+
+        img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+
         &.expanded {
             padding: 10px;
         }
     }
-    &-header{
-        flex-basis:30%;
-        p{
+
+    &-header {
+        flex-basis: 30%;
+
+        p {
             text-align: center;
             font-size: 1.2rem;
         }
     }
-    &-body{
-        // flex-basis:50%;
+
+    &-body {
         padding: 24px;
-        .brand{
+
+        .brand {
             text-transform: uppercase;
             font-size: 12px;
             margin-bottom: 8px;
@@ -82,7 +101,7 @@ width: calc(100% - 10px);
             overflow: hidden;
             white-space: nowrap;
         }
-        .title{
+        .title {
             font-family: 'Geometria', sans-serif;
             font-size: 16px;
             font-weight: 600;
@@ -94,46 +113,48 @@ width: calc(100% - 10px);
             -webkit-box-orient: vertical;
             margin-bottom: 20px;
         }
-        .price-miles-previous{
+        .price-miles-previous {
             font-size: 14px;
             color: #757575;
             text-decoration: line-through;
         }
-        .price-miles, .price{
+        .price-miles,
+        .price {
             font-size: 14px;
             color: #757575;
             margin-top: 5px;
         }
-        strong{
+        strong {
             font-size: 20px;
             font-weight: 600;
         }
-        // .price{
-
-        // }
     }
-    &-footer{
+
+    &-footer {
         min-width: 100%;
         display: flex;
         justify-content: center;
         flex-basis: 20%;
-        &-button{
+
+        &-button {
             cursor: pointer;
             border: none;
             border-radius: 0.25rem;
             background-color: #cc1414;
-            color:white;
+            color: white;
             padding: 0.5rem;
             width: 50%;
         }
-        &-button:hover{
-            color:#cc1414;
+
+        &-button:hover {
+            color: #cc1414;
             background-color: white;
-            border:1px solid #cc1414;
+            border: 1px solid #cc1414;
 
         }
     }
 }
-.product:hover{
-    scale:(1.05)
+
+.product:hover {
+    scale: (1.05)
 }

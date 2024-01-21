@@ -5,25 +5,35 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ProductComponent } from './components/product/product.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 import { CartComponent } from './components/cart/cart.component';
-import { MainComponent } from './components/main/main.component';
-import { BannerComponent } from './components/banner/banner.component';
+import { BannerComponent } from './components/home/banner/banner.component';
+import { SearchProductComponent } from './components/shared/header/search-product/search-product.component';
+import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductCardComponent } from './components/home/product-card/product-card.component';
+import { NumberMilPipe } from './pipes/number-mil.pipe';
+import { NumberDecimalPipe } from './pipes/number-decimal.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProductComponent,
     CartComponent,
-    MainComponent,
-    BannerComponent
+    BannerComponent,
+    SearchProductComponent,
+    HomeComponent,
+    ProductDetailsComponent,
+    ProductCardComponent,
+    NumberMilPipe,
+    NumberDecimalPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, HttpClientModule,
     CarouselModule.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

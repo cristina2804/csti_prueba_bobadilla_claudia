@@ -22,3 +22,9 @@
         // }
     }
 }
+
+@media (max-width: 768px) {
+    .button-catalogo {
+        display: none; /* Oculta el botón en dispositivos con un ancho máximo de 768 píxeles */
+    }
+}
