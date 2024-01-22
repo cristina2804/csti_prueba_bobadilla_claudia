@@ -221,3 +221,40 @@ img {
 article.active {
     border-color: $primaryBlue1 !important;
 }
+
+.products-relation {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+    padding-top: 30px;
+}
+
+.container{
+    &-products{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    user-select: none !important;
+    p, img, div {
+        user-select: none !important;
+    }
+}
+
+
+.container-products-carousel {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .container-products {
+        display: none; /* Oculta el container en dispositivos con un ancho máximo de 768 píxeles */
+    }
+    .container-products-carousel {
+        display: block; /* Muestra el container en dispositivos con un ancho máximo de 768 píxeles */
+    }
+}

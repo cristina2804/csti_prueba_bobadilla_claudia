@@ -80,4 +80,28 @@
             </ul>
         </div>
     </div>
+    <div class="row mt-4 products-relation">
+        <div class="col">
+            <h5>Productos Similares</h5>
+            <div class="container-products mt-4">
+                <ng-container *ngFor="let producto of producto.productosRelacionados">
+                    <app-product-card [producto]="producto" [attr.data-perview]="dataPerview"></app-product-card>
+                </ng-container>
+            </div>
+            <div class="container-products-carousel mt-4">
+                <carousel [interval]="0" [showIndicators]="false"
+                    [startFromIndex]="0" [singleSlideOffset]="false"
+                    #carousel
+                    (mousedown)="onMouseDown($event)"
+                    (touchstart)="onTouchStart($event)"
+                    (touchmove)="onTouchMove($event)"
+                    (touchend)="onTouchEnd($event)">
+                    >
+                    <slide *ngFor="let producto of producto.productosRelacionados; let index=index">
+                        <app-product-card [producto]="producto" [attr.data-perview]="dataPerview"></app-product-card>
+                    </slide>
+                </carousel>
+            </div>
+        </div>
+    </div>
 </div>

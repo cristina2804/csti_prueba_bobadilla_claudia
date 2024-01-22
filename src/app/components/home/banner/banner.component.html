@@ -1,5 +1,5 @@
 <div>
-    <carousel [(activeSlide)]="activeSlide" [isAnimated]="true" [showIndicators]="false" [interval]="6000">
+    <carousel [(activeSlide)]="activeSlide" [isAnimated]="true" [showIndicators]="false" [interval]="6000" [itemsPerSlide]="itemsPerSlide">
         <slide *ngFor="let image of images">
             <div class="custom-carousel-item ">
                 <img [src]="image" alt="Slide">
