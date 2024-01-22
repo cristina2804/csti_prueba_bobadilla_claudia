@@ -10,8 +10,9 @@
     <div class="benefit-zone">
         <div class="row">
             <div class="col-12 col-md-2">
-                <button class="button button--medium button--blue button--primary mt-0" type="button" style="margin-top: -6px !important;">
-                    <span class="button__text" (click)="toHome()">
+                <button class="button button--medium button--blue button--primary mt-0" 
+                type="button" style="margin-top: -6px !important;" (click)="toHome()">
+                    <span class="button__text" >
                         Home
                     </span>
                 </button>
@@ -23,7 +24,12 @@
                 <div class="cart" [ngClass]="{ show: viewCart }">
                     <app-cart></app-cart>
                 </div>
-                <!-- <app-cart-shop></app-cart-shop> -->
+                <span class="navbar-cart" style="font-size: 20px; cursor: pointer;" (click)="toCartShop()">
+                    <div class="navbar-cart-items" *ngIf="(myCart$ | async)?.length">
+                        <p>{{ (myCart$ | async)?.length }}</p>
+                    </div>
+                    <i class="fas fa-shopping-cart"></i>
+                </span>
             </div>
         </div>
     </div>

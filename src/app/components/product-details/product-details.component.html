@@ -27,11 +27,11 @@
         <div class="customizable col-sm-12 col-md-4">
             <div>
                 <div class="section">
-                    <div class="cantidad no-custom" ng-reflect-klass="cantidad" ng-reflect-ng-class="no-custom">
+                    <div class="cantidad no-custom">
                         <p>Cantidad</p>
                         <div class="dropdown cantidad dynamic">
                             <div class="form-group mb-0">
-                                <select class="form-control" [(ngModel)]="cantidadProducto" id="exampleFormControlSelect1">
+                                <select class="form-control" [(ngModel)]="producto.cantidad" id="exampleFormControlSelect1">
                                     <option *ngFor="let item of cantidadesProducto">{{ item }}</option>
                                 </select>
                             </div>
@@ -49,7 +49,10 @@
                 <div class="section">
                     <div class="buttons justify-content-between">
                         <div>
-                            <button type="button" class="btn btn-outline-primary btn-lg">Agregar a carrito</button>
+                            <button type="button" class="btn btn-outline-primary btn-lg"
+                            (click)="addCart(producto)">
+                                Agregar a carrito
+                            </button>
                         </div>
                         <div class="align-right">
                             <button class="btn btn-primary btn-lg" type="submit">Canjear</button>

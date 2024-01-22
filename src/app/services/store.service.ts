@@ -1,67 +1,62 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '../interfaces/product.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Producto } from '../interfaces/producto.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
 
-  baseUrl = 'https://api.escuelajs.co/api/v1/'
-  baseUrlBenefit = 'https://www.interbankbenefit.pe/'
+  constructor() { }
 
-  constructor(private httpClient: HttpClient) { }
-
-  private myList: Product[] = [];
+  private myList: Producto[] = [];
   
-  private myCart = new BehaviorSubject<Product[]>([]);
+  private myCart = new BehaviorSubject<Producto[]>([]);
   myCart$ = this.myCart.asObservable();
   
-  getAllProducts(): Observable<Product[]> {
-    const response = this.httpClient.get<Product[]>(`${this.baseUrl}products`)
-    return response
+  setCart(productos: Producto[]) {
+    this.myCart.next(productos);
   }
-  
-  addProduct(product: Product) {
-    // debugger;
+
+  addProduct(producto: Producto) {
     if (this.myList.length === 0) {
-      product.cantidad = 1;
-      this.myList.push(product);
+      // producto.cantidad = 1;
+      this.myList.push(producto);
       //emito la lista para los que estén escuchando
       this.myCart.next(this.myList);
-
+      console.log(this.myCart)
     } else {
       const productMod = this.myList.find((element) => {
-        return element.id === product.id
+        return element.keyItem === producto.keyItem
       })
       if (productMod) {
-        productMod.cantidad = productMod.cantidad + 1;
+        productMod.cantidad = productMod.cantidad + producto.cantidad;
         this.myCart.next(this.myList);
       } else {
-        product.cantidad = 1;
-        this.myList.push(product);
-        //ojo hay que emitir la lista!!
+        producto.cantidad = 1;
+        this.myList.push(producto);
         this.myCart.next(this.myList);
       }
     }
+    localStorage.setItem('cart', JSON.stringify(this.myList));
   }
 
   findProductById(id: string) {
     return this.myList.find((element) => {
-      return element.id === id
+      return element.keyItem === id
     })
   }
 
   deleteProduct(id: string) {
-    this.myList = this.myList.filter((product) => {
-      return product.id != id
+    this.myList = this.myList.filter((producto) => {
+      return producto.keyItem != id
     })
     this.myCart.next(this.myList);
   }
   
   totalCart() {
-    const total = this.myList.reduce(function (acc, product) { return acc + (product.cantidad * product.price); }, 0)
+    const total = this.myList.reduce(function (acc, producto) { return acc + (producto.cantidad * producto.precioPuntosRegular); }, 0)
     return total
   }
 

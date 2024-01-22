@@ -17,4 +17,5 @@ export interface Producto {
     descripcionMarca: string;
     idProducto: number;
     productosRelacionados: Producto[];
+    cantidad: number;
 }

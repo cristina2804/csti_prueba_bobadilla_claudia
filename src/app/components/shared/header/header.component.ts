@@ -22,4 +22,8 @@ export class HeaderComponent {
     this.router.navigate(['/']);
   }
 
+  toCartShop() {
+    this.router.navigate(['/cart-shop']);
+  }
+
 }

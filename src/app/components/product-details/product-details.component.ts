@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { ProductCardComponent } from '../home/product-card/product-card.component';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-product-details',
@@ -21,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   imagenSelected: string;
   dataPerview:number = 4;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) { }
+  constructor(private apiService: ApiService, private storeService: StoreService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     // this.keyItem = this.route.snapshot.paramMap.get('product');
@@ -39,7 +40,8 @@ export class ProductDetailsComponent implements OnInit {
   getProduct() {
     this.apiService.getProducto(this.keyItem).subscribe((data: any) => {
       if (data) {
-        this.producto = data;
+        this.producto = { ...data, imagenOportunidad: '/ficha-tecnica/' + data.imagenes[0], cantidad: 1 };
+        console.log(this.producto);
         this.cantidadesProducto = Array.from({ length: data.stockDisponible }, (_, index) => index + 1);
         this.imagenSelected = data.imagenes.length > 0 ? data.imagenes[0] : null;
       }
@@ -85,4 +87,8 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
   
+  addCart(producto) {
+    this.storeService.addProduct(producto);
+  }
+
 }
