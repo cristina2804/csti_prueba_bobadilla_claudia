@@ -94,7 +94,9 @@ export class ProductDetailsComponent implements OnInit {
   
   addCart(producto, redirect) {
     this.storeService.addProduct(producto);
-    this.router.navigate(['/cart-shop']);
+    if (redirect) {
+      this.router.navigate(['/cart-shop']);
+    }
   }
 
 }

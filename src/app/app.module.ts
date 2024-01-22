@@ -8,7 +8,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
-import { CartComponent } from './components/cart/cart.component';
 import { BannerComponent } from './components/home/banner/banner.component';
 import { SearchProductComponent } from './components/shared/header/search-product/search-product.component';
 import { HomeComponent } from './components/home/home.component';
@@ -23,7 +22,6 @@ import { CartShopComponent } from './components/cart-shop/cart-shop.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    CartComponent,
     BannerComponent,
     SearchProductComponent,
     HomeComponent,
