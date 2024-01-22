@@ -1,7 +1,7 @@
 <div class="searchbar searchbar--icon-right searchbar--boxed" [ngClass]="{ 'searchbar--open': focusInput }">
     <label class="searchbar__input">
         <input class="searchbar__value" type="text" placeholder="Encuentra lo mejor en vales, productos y más"
-            [ngClass]="{'loading':isLoading}" [spellcheck]="false" (ngModelChange)="search($event)" [(ngModel)]="src"
+            [ngClass]="{'loading':isLoading}" [spellcheck]="false" (ngModelChange)="search($event)" [formControl]="searchTerm"
             (focus)="onInputFocus()" (blur)="onInputBlur()">
         <button type="button" class="btn btn__search">
             <i class="fa-solid fa-search"></i>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <a *ngFor="let item of productos" class="searchbar--result"
-            href="p/kit-asado-3-piezas-tabla-de-picar-cuchillo-8-trinche-grillcorp-29485661007" target="_self"
+            (click)="toProduct(producto.keyItem)" target="_self"
             data-value="null">
             {{ item.titulo }}
         </a>

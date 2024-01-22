@@ -1,6 +1,6 @@
 <div class="container pt-4" *ngIf="producto">
     <div class="row">
-        <div class="product-details col-8">
+        <div class="product-details col-sm-12 col-md-8">
             <h6 class="text-secondary">{{ producto.descripcionMarca }}</h6>
             <h4>{{ producto.nombre }}</h4>
             <div class="preview" *ngIf="producto.imagenes.length > 0">
@@ -10,7 +10,7 @@
                 <div class="thumbnail">
                     <section class="article-list">
                         <article *ngFor="let imagen of producto.imagenes" (click)="selectImage(imagen)" 
-                        style="height: 153px;" [class.active]="imagen == imagenSelected">
+                        [class.active]="imagen == imagenSelected">
                             <img alt="Thumbnail"
                                 [src]="'https://static.interbankbenefit.pe/public/web/images/producto/ficha-tecnica/' + imagen">
                         </article>
@@ -24,7 +24,7 @@
                 </li>
             </ul>
         </div>
-        <div class="customizable col-4 px-0">
+        <div class="customizable col-sm-12 col-md-4">
             <div>
                 <div class="section">
                     <div class="cantidad no-custom" ng-reflect-klass="cantidad" ng-reflect-ng-class="no-custom">
@@ -96,7 +96,6 @@
                     (touchstart)="onTouchStart($event)"
                     (touchmove)="onTouchMove($event)"
                     (touchend)="onTouchEnd($event)">
-                    >
                     <slide *ngFor="let producto of producto.productosRelacionados; let index=index">
                         <app-product-card [producto]="producto" [attr.data-perview]="dataPerview"></app-product-card>
                     </slide>

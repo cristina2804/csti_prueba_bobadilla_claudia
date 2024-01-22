@@ -56,12 +56,13 @@
     border-radius: 5px;
     overflow: hidden;
     transition: .25s;
+    height: 153px;
     cursor: pointer;
 }
 
-.customizable {
-    width: 40%;
-}
+// .customizable {
+//     width: 40%;
+// }
 
 .customizable>div {
     border: 1px solid #e0e0e0;
@@ -256,5 +257,14 @@ article.active {
     }
     .container-products-carousel {
         display: block; /* Muestra el container en dispositivos con un ancho máximo de 768 píxeles */
+    }
+    .product-details .preview {
+        padding-right: 0;
+    }
+
+    .product-details .preview .thumbnail .article-list article {
+        min-width: calc((100% / 3) - (30px / 3));
+        max-width: calc((100% / 3) - (30px / 3));
+        height: 120px;
     }
 }

@@ -8,7 +8,7 @@
         <ol class="custom-indicators">
             <li *ngFor="let image of images; let i = index" (click)="selectSlide(i)" [class.active]="i === activeSlide">
                 <a>{{ i + 1 }}</a>
-                <svg class="glide__loader" height="30" width="30">
+                <svg class="glide__loader ml-1" height="30" width="30">
                     <circle cx="15" cy="15" r="14" fill="none" stroke-width="2"></circle>
                 </svg>
             </li>

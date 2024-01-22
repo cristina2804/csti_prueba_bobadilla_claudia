@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http' // buscar
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +11,6 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { CartComponent } from './components/cart/cart.component';
 import { BannerComponent } from './components/home/banner/banner.component';
 import { SearchProductComponent } from './components/shared/header/search-product/search-product.component';
-import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductCardComponent } from './components/home/product-card/product-card.component';
@@ -34,6 +35,7 @@ import { NumberDecimalPipe } from './pipes/number-decimal.pipe';
     AppRoutingModule, HttpClientModule,
     CarouselModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
