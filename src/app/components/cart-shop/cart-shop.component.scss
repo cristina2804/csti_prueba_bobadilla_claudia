@@ -1,5 +1,11 @@
 @import 'src/assets/variables';
 
+.carrito-item {
+    // border-bottom: 1px solid $gray2;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
 .carrito-item, .carrito-item-skeleton {
     display: flex;
     align-items: flex-start;
@@ -79,13 +85,6 @@
     line-height: 22px;
 }
 
-.carrito-item .precio p {
-    text-align: right;
-    color: #9c9c9c;
-    font-size: 14px !important;
-    line-height: 22px;
-}
-
 .product-details {
     .preview {
         margin-bottom: 30px;
@@ -150,8 +149,9 @@
 //     width: 40%;
 // }
 
+
 .customizable>div {
-    border: 1px solid #e0e0e0;
+    // border: 1px solid #e0e0e0;
     border-radius: 5px;
     margin-top: 35px;
     padding: 0 25px;
@@ -353,4 +353,9 @@ article.active {
         max-width: calc((100% / 3) - (30px / 3));
         height: 120px;
     }
+}
+
+.total-millas {
+    color: $primaryBlue1;
+    font-size: 18px;
 }

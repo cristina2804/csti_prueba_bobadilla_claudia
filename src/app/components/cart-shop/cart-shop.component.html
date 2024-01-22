@@ -1,14 +1,16 @@
 <div class="container pt-4">
     <div class="row">
-        <div class="product-details col-sm-12 col-md-6">
-            <h2 class="my-4">Carrito de Canjes</h2>
+        <div class="product-details col-sm-12 col-md-6 pr-4">
+            <h2 class="my-4 mb-4">Carrito de Canjes</h2>
             <div class="carrito-item" *ngFor="let producto of myCart$ | async">
                 <div class="detalle">
                     <div class="imagen">
                         <div class="img"><img
                             [src]="'https://static.interbankbenefit.pe/public/web/images/producto/thumbnail' + producto.imagenOportunidad"
-                                alt="Olla alta granito black 24cm con tapa koba"></div><button class="eliminar"
-                            type="button">Eliminar</button>
+                                alt="Olla alta granito black 24cm con tapa koba"></div>
+                        <button class="eliminar" type="button" (click)="deleteProduct(producto)">
+                            Eliminar
+                        </button>
                     </div>
                     <div>
                         <p class="marca">{{ producto.descripcionMarca }}</p>
@@ -16,39 +18,31 @@
                     </div>
                 </div>
                 <div class="precio">
-                    <p class="millas"><strong>{{ producto.precioPuntos | numberMil }}</strong> Millas</p>
-                    <p class="soles">o {{ producto.precioCatalogo | numberDecimal }}</p>
-                    <!-- <quantity-selector ng-reflect-max="1" ng-reflect-min="1"
-                        ng-reflect-current="1">
-                        <div class="quantity-selector small" ng-reflect-klass="quantity-selector"
-                            ng-reflect-ng-class="small"><button class="remove disabled" type="button"
-                                ng-reflect-klass="remove" ng-reflect-ng-class="disabled"><i aria-hidden="true"
-                                    class="fas fa-minus"></i></button><input type="text" readonly="true"><button
-                                class="add disabled" type="button" ng-reflect-klass="add"
-                                ng-reflect-ng-class="disabled"><i aria-hidden="true" class="fas fa-plus"></i></button>
-                        </div>
-                    </quantity-selector> -->
+                    <p class="millas"><strong>{{ producto.precioPuntos * producto.cantidad | numberMil }}</strong> Millas</p>
+                    <p class="soles">o S/. {{ producto.precioCatalogo * producto.cantidad | numberDecimal }}</p>
+                    <p class="soles">Cantidad: {{ producto.cantidad }}</p>
                 </div>
             </div>
         </div>
-        <div class="customizable col-sm-12 col-md-6">
-            <div>
-                <div class="section">
-                    <div class="cantidad no-custom">
-                        <p>Cantidad</p>
-                        <div class="dropdown cantidad dynamic">
-                            <div class="form-group mb-0">
-                                asdasdasd
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section precio">
-                    <p>Precio
-                    </p>
+        <div class="customizable col-sm-12 col-md-6 pl-4">
+            <div style="padding-top: 40px;">
+                <h5>Detalle de Precios</h5>
+                <div class="section precio text-right">
+                    <span>
+                        Subtotal {{ (myCart$ | async).length }} Producto
+                    </span>
                     <p>
-                        asdasdasd
+                        {{ totalCart().totalMillas | numberMil }} Millas<br>
+                        o S/. {{ totalCart().totalSoles | numberDecimal }}
                     </p>
+                </div>
+                <div class="section">
+                    <strong>
+                        Total en Millas
+                    </strong>
+                    <strong class="total-millas">
+                        {{ totalCart().totalMillas | numberMil }} Millas
+                    </strong>
                 </div>
                 <div class="section">
                     <div class="buttons flex">

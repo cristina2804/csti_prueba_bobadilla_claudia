@@ -20,44 +20,51 @@ export class StoreService {
   }
 
   addProduct(producto: Producto) {
-    if (this.myList.length === 0) {
-      // producto.cantidad = 1;
-      this.myList.push(producto);
+    const currentCart = this.myCart.value;
+    if (currentCart.length === 0) {
+      currentCart.push(producto);
       //emito la lista para los que estén escuchando
-      this.myCart.next(this.myList);
-      console.log(this.myCart)
+      this.myCart.next(currentCart);
     } else {
-      const productMod = this.myList.find((element) => {
+      const indexProduct = currentCart.findIndex((element) => {
         return element.keyItem === producto.keyItem
       })
-      if (productMod) {
-        productMod.cantidad = productMod.cantidad + producto.cantidad;
-        this.myCart.next(this.myList);
+      if (indexProduct > -1) {
+        this.myCart.value[indexProduct].cantidad = this.myCart.value[indexProduct].cantidad + producto.cantidad;
+        this.myCart.next(currentCart);
       } else {
-        producto.cantidad = 1;
-        this.myList.push(producto);
-        this.myCart.next(this.myList);
+        currentCart.push(producto);
+        this.myCart.next(currentCart);
       }
     }
-    localStorage.setItem('cart', JSON.stringify(this.myList));
+    localStorage.setItem('cart', JSON.stringify(currentCart));
   }
 
-  findProductById(id: string) {
-    return this.myList.find((element) => {
-      return element.keyItem === id
-    })
+  findProductById(keyItem: string) {
+    return null;
+    // const currentCart = this.myCart.value;
+    // const indexProduct = currentCart.findIndex((element) => {
+    //   return element.keyItem === keyItem
+    // })
+    // currentCart.splice(indexProduct, 1);
+    // this.myCart.next(currentCart)
   }
 
-  deleteProduct(id: string) {
-    this.myList = this.myList.filter((producto) => {
-      return producto.keyItem != id
+  deleteProduct(keyItem: string) {
+    const currentCart = this.myCart.value;
+    const indexProduct = currentCart.findIndex((element) => {
+      return element.keyItem === keyItem
     })
-    this.myCart.next(this.myList);
+    currentCart.splice(indexProduct, 1);
+    this.myCart.next(currentCart)
+    localStorage.setItem('cart', JSON.stringify(currentCart));
   }
   
   totalCart() {
-    const total = this.myList.reduce(function (acc, producto) { return acc + (producto.cantidad * producto.precioPuntosRegular); }, 0)
-    return total
+    const currentCart = this.myCart.value;
+    const total = currentCart.reduce(function (acc, producto) { return acc + (producto.cantidad * producto.precioPuntosRegular); }, 0)
+    const totalSoles = currentCart.reduce(function (acc, producto) { return acc + (producto.cantidad * producto.precioCatalogo); }, 0)
+    return { totalMillas: total, totalSoles: totalSoles }
   }
 
 }

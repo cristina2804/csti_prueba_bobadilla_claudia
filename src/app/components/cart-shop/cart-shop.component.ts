@@ -15,4 +15,14 @@ export class CartShopComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteProduct(product) {
+    const result = this.storeService.deleteProduct(product.keyItem);
+    return result;
+  }
+
+  totalCart() {
+    const result = this.storeService.totalCart();
+    return result;
+  }
+
 }
