@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -11,10 +12,14 @@ export class HeaderComponent {
   viewCart: boolean = false;
   myCart$ = this.storeService.myCart$;
 
-  constructor(private storeService: StoreService) { }
+  constructor(private storeService: StoreService, private router: Router) { }
 
   onToggleCart() {
     this.viewCart = !this.viewCart
   };
+
+  toHome() {
+    this.router.navigate(['/']);
+  }
 
 }

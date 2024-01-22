@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Producto } from 'src/app/interfaces/producto.interface';
 import { ApiService } from 'src/app/services/api.service';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @Component({
   selector: 'app-home',
@@ -12,37 +14,25 @@ export class HomeComponent implements OnInit {
   productos:Producto[] = [];
   dataPerview:number = 4;
   
-  constructor(private apiService:ApiService) { }
+  constructor(private apiService:ApiService, private router: Router) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.calculateDataPerview();
-  }
-
-  calculateDataPerview() {
-    const screenWidth = window.innerWidth;
-
-    // Ajusta data-perview en función del ancho de la pantalla
-    if (screenWidth > 1200) {
-      this.dataPerview = 4;
-    } else if (screenWidth > 1000) {
-      this.dataPerview = 3;
-    } else if (screenWidth > 800) {
-      this.dataPerview = 2;
-    } else {
-      this.dataPerview = 1;
-    }
+    this.dataPerview = ProductCardComponent.calculateDataPerview();
   }
 
   getAllProductos() {
     this.apiService.getAllProductos("destacados=true").subscribe((data) => {
       this.productos = data
-      console.log(this.productos)
     })
   }
 
+  toCatalog() {
+    this.router.navigate(['/catalog']);
+  }
+
   ngOnInit() {
-    this.calculateDataPerview();
+    this.dataPerview = ProductCardComponent.calculateDataPerview();
     this.getAllProductos();
   }
 

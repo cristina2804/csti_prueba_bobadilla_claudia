@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss']
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent {
 
   @Input()
   isExpandedImage = false;
@@ -16,23 +16,27 @@ export class ProductCardComponent implements OnInit {
   @Input()
   producto: Producto = null;
 
+  @Input()
+  showButton: boolean = false;
+
   productos: Producto[] = [];
 
-  constructor(private storeService:StoreService, private router: Router) { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
-    // this.getProducts();
+  static calculateDataPerview() {
+    const screenWidth = window.innerWidth;
+
+    // Ajusta data-perview en función del ancho de la pantalla
+    if (screenWidth > 1200) {
+      return 4;
+    } else if (screenWidth > 1000) {
+      return 3;
+    } else if (screenWidth > 800) {
+      return 2;
+    } else {
+      return 1;
+    }
   }
-
-  // getProducts() {
-  //   this.storeService.getAllProducts().subscribe((data) => {
-  //     this.products = data
-  //   })
-  // }
-
-  // addToCart(producto: Producto) {
-  //   this.storeService.addProduct(producto)
-  // }
 
   toProduct(producto: string) {
     this.router.navigate(['/product/', producto]);

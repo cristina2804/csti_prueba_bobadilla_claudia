@@ -1,0 +1,21 @@
+@import 'src/assets/variables.scss';
+
+.filter-products {
+    background-color: $gray5;
+    border-right: 1px solid $gray4;
+    border-top: 1px solid $gray4;
+    padding: 20px 40px;
+    width: 100%;
+    max-width: 350px;
+    flex: 1;
+}
+
+.result-products {
+    flex: 1;
+}
+
+.fa-square, .fa-check-square {
+    font-size: 22px;
+    margin-top: -8px;
+    cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Producto } from 'src/app/interfaces/producto.interface';
@@ -19,7 +19,7 @@ export class SearchProductComponent {
   productosEncontrados:Producto[] = [];
   focusInput: boolean = false;
 
-  constructor(private apiService:ApiService, private router: Router) {
+  constructor(private apiService:ApiService, private router: Router, private elRef: ElementRef) {
   }
 
   ngOnInit() {
@@ -36,13 +36,20 @@ export class SearchProductComponent {
         console.log(this.productos)
       });
   }
+
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: Event) {
+    // Maneja el clic fuera del input y los resultados
+    const target = event.target as HTMLElement;
+    const searchBar = this.elRef.nativeElement.querySelector('.searchbar');
+
+    if (!searchBar.contains(target)) {
+      this.focusInput = false;
+    }
+  }
   
   onInputFocus() {
     this.focusInput = true;
-  }
-
-  onInputBlur() {
-    this.focusInput = false;
   }
 
   search(term: string) {
@@ -54,7 +61,6 @@ export class SearchProductComponent {
             switchMap((data: any) => {
               this.productosEncontrados = data.result;
               this.productos = this.productosEncontrados;
-              console.log(this.productos);
               return [];
             })
           );
@@ -62,7 +68,6 @@ export class SearchProductComponent {
         this.productos = this.productosEncontrados.filter(producto =>
           producto.titulo.toLowerCase().includes(term.toLowerCase())
         );
-        console.log(this.productos);
         return [];
       }
     } else {
@@ -73,6 +78,7 @@ export class SearchProductComponent {
   }
 
   toProduct(producto: string) {
+    this.focusInput = false;
     this.router.navigate(['/product/', producto]);
   }
 

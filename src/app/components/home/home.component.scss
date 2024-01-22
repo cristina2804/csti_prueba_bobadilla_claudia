@@ -9,18 +9,12 @@
     &-title{
         margin-bottom: 1.5rem;
     }
-    &-products{
-        display: flex;
-        justify-content: center;
-        // flex-direction: row;
-        flex-wrap: wrap;
-        // app-product{
-        //    display: flex;
-        //    justify-content: center;
-        //    flex-direction: row;
-        //    flex-wrap: wrap;
-        // }
-    }
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {

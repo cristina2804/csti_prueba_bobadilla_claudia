@@ -16,6 +16,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ProductCardComponent } from './components/home/product-card/product-card.component';
 import { NumberMilPipe } from './pipes/number-mil.pipe';
 import { NumberDecimalPipe } from './pipes/number-decimal.pipe';
+import { ProductsCatalogComponent } from './components/products-catalog/products-catalog.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NumberDecimalPipe } from './pipes/number-decimal.pipe';
     ProductCardComponent,
     NumberMilPipe,
     NumberDecimalPipe,
+    ProductsCatalogComponent,
   ],
   imports: [
     BrowserModule,

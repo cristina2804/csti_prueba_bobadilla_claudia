@@ -5,10 +5,6 @@
         <img [src]="'https://static.interbankbenefit.pe/public/web/images/producto/thumbnail' + producto.imagenOportunidad"
             alt="" height="50" />
     </div>
-    <!-- <div class="card-product-header">
-            <h3 class="card-product-header-title">{{ product.title }}</h3>
-            <p>$ {{ product.price }}</p>
-        </div> -->
 
     <div class="card-product-body">
         <p class="brand">{{ producto.descripcionMarca }}</p>
@@ -22,9 +18,12 @@
         <p class="price">S/.{{ producto.formatPrecioCatalogo }}</p>
         <!-- <img [src]="product.images[0]" alt="" height="50" /> -->
     </div>
-    <!-- <div class="card-product-footer">
-            <button class="card-product-footer-button" (click)="addToCart(product)">
-                <i class="fa-solid fa-basket-shopping"></i>
+    <div class="card-product-footer pt-0" *ngIf="showButton">
+        <div class="buttons d-flex justify-content-between">
+            <button type="button" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-shopping-cart"></i>
             </button>
-        </div> -->
+            <button class="btn btn-primary btn-lg btn-view" type="submit">Ver Producto</button>
+        </div>
+    </div>
 </div>

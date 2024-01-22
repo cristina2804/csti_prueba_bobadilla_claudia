@@ -101,6 +101,14 @@ a {
     border-bottom: 0px;
 }
 
+.container{
+    &-products{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
 // .container {
 //     padding: 0;
 // }
@@ -139,4 +147,13 @@ li {
         border-color: $primaryBlue0;
         color: $primaryBlue0;
     }
+}
+
+.badge-pill {
+    padding-right: 1em;
+    padding-left: 1em;
+    padding: .6em 1em;
+    border-radius: 10rem;
+    border: 1px solid $gray3;
+    background-color: #fff;
 }

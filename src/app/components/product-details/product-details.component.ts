@@ -1,8 +1,9 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Producto } from 'src/app/interfaces/producto.interface';
 import { ApiService } from 'src/app/services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
+import { ProductCardComponent } from '../home/product-card/product-card.component';
 
 @Component({
   selector: 'app-product-details',
@@ -23,36 +24,29 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private apiService: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.keyItem = this.route.snapshot.paramMap.get('product');
-    this.getProduct();
+    // this.keyItem = this.route.snapshot.paramMap.get('product');
+    this.route.params.subscribe(params => {
+      this.keyItem = params['product']
+      this.getProduct();
+    });
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.calculateDataPerview();
-  }
-
-  calculateDataPerview() {
-    const screenWidth = window.innerWidth;
-
-    // Ajusta data-perview en función del ancho de la pantalla
-    if (screenWidth > 1200) {
-      this.dataPerview = 4;
-    } else if (screenWidth > 1000) {
-      this.dataPerview = 3;
-    } else if (screenWidth > 800) {
-      this.dataPerview = 2;
-    } else {
-      this.dataPerview = 1;
-    }
+    this.dataPerview = ProductCardComponent.calculateDataPerview();
   }
 
   getProduct() {
-    console.log(this.keyItem)
     this.apiService.getProducto(this.keyItem).subscribe((data: any) => {
-      this.producto = data;
-      this.cantidadesProducto = Array.from({ length: data.stockDisponible }, (_, index) => index + 1);
-      this.imagenSelected = data.imagenes.length > 0 ? data.imagenes[0] : null;
+      if (data) {
+        this.producto = data;
+        this.cantidadesProducto = Array.from({ length: data.stockDisponible }, (_, index) => index + 1);
+        this.imagenSelected = data.imagenes.length > 0 ? data.imagenes[0] : null;
+      }
+    },
+    error => {
+      this.producto = null;
+      console.error(error, 'errror generado');
     })
   }
 
@@ -89,10 +83,6 @@ export class ProductDetailsComponent implements OnInit {
         this.currentImageIndex++;
       }
     }
-  }
-
-  onTouchEnd(event: TouchEvent): void {
-    // Limpiar cualquier lógica necesaria al finalizar el toque
   }
   
 }

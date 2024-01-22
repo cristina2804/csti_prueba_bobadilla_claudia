@@ -2,7 +2,7 @@
     <label class="searchbar__input">
         <input class="searchbar__value" type="text" placeholder="Encuentra lo mejor en vales, productos y más"
             [ngClass]="{'loading':isLoading}" [spellcheck]="false" (ngModelChange)="search($event)" [formControl]="searchTerm"
-            (focus)="onInputFocus()" (blur)="onInputBlur()">
+            (focus)="onInputFocus()">
         <button type="button" class="btn btn__search">
             <i class="fa-solid fa-search"></i>
         </button>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <a *ngFor="let item of productos" class="searchbar--result"
-            (click)="toProduct(producto.keyItem)" target="_self"
+            (click)="toProduct(item.keyItem)" target="_self"
             data-value="null">
             {{ item.titulo }}
         </a>

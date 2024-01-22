@@ -69,8 +69,8 @@
         }
 
         img {
-            width: 100%;
-            height: auto;
+            width: auto;
+            height: 200px;
             max-height: 100%;
         }
 
@@ -135,7 +135,7 @@
         display: flex;
         justify-content: center;
         flex-basis: 20%;
-
+        padding: 24px;
         &-button {
             cursor: pointer;
             border: none;
@@ -150,11 +150,18 @@
             color: #cc1414;
             background-color: white;
             border: 1px solid #cc1414;
-
         }
     }
 }
 
 .product:hover {
     scale: (1.05)
+}
+
+.card-product-footer .buttons {
+    width: 100%;
+}
+
+.btn-view {
+    width: calc(100% - 60px);
 }
