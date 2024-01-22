@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
 
   getAllProductos() {
     this.apiService.getAllProductos("destacados=true").subscribe((data) => {
-      this.productos = data
+      this.productos = data.slice(0, 8)
     })
   }
 

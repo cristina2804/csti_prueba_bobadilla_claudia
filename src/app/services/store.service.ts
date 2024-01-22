@@ -37,6 +37,7 @@ export class StoreService {
         this.myCart.next(currentCart);
       }
     }
+    console.log(this.myCart.value);
     localStorage.setItem('cart', JSON.stringify(currentCart));
   }
 
@@ -62,7 +63,7 @@ export class StoreService {
   
   totalCart() {
     const currentCart = this.myCart.value;
-    const total = currentCart.reduce(function (acc, producto) { return acc + (producto.cantidad * producto.precioPuntosRegular); }, 0)
+    const total = currentCart.reduce(function (acc, producto) { return acc + (producto.cantidad * producto.precioPuntos); }, 0)
     const totalSoles = currentCart.reduce(function (acc, producto) { return acc + (producto.cantidad * producto.precioCatalogo); }, 0)
     return { totalMillas: total, totalSoles: totalSoles }
   }

@@ -21,7 +21,7 @@ export class ProductCardComponent {
 
   productos: Producto[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private storeService: StoreService) { }
 
   static calculateDataPerview() {
     const screenWidth = window.innerWidth;
@@ -40,6 +40,13 @@ export class ProductCardComponent {
 
   toProduct(producto: string) {
     this.router.navigate(['/product/', producto]);
+  }
+
+  addProduct(event: Event, producto: Producto) {
+    event.stopPropagation();
+    console.log(producto)
+    this.storeService.addProduct({ ...producto, cantidad: 1 });
+    this.router.navigate(['/cart-shop']);
   }
 
   expandImage() {

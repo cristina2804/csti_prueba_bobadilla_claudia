@@ -17,8 +17,20 @@
     flex-wrap: wrap;
 }
 
+.responsive-none {
+    display: block;
+}
+
+.responsive-block {
+    display: none;
+}
+
 @media (max-width: 768px) {
-    .button-catalogo {
-        display: none; /* Oculta el botón en dispositivos con un ancho máximo de 768 píxeles */
+    .responsive-none {
+        display: none;
+    }
+    
+    .responsive-block {
+        display: block;
     }
 }

@@ -1,3 +1,8 @@
+<div class="navbar-message">
+    <div class="container">
+        <span>Peticiones permitidas: 1000</span>
+    </div>
+</div>
 <div class="navbar-auth text-right">
     <div class="container">
         <span>¡Hola! </span>
@@ -9,22 +14,25 @@
 <div class="container">
     <div class="benefit-zone">
         <div class="row">
-            <div class="col-12 col-md-2">
+            <div class="col-12 col-md-2 button-home-large d-flex mb-4">
                 <button class="button button--medium button--blue button--primary mt-0" 
                 type="button" style="margin-top: -6px !important;" (click)="toHome()">
                     <span class="button__text" >
                         Home
                     </span>
                 </button>
+                <span class="navbar-cart align-right justify-content-between responsive-block" style="font-size: 20px; cursor: pointer;" (click)="toCartShop()">
+                    <div class="navbar-cart-items" *ngIf="(myCart$ | async)?.length">
+                        <p>{{ (myCart$ | async)?.length }}</p>
+                    </div>
+                    <i class="fas fa-shopping-cart"></i>
+                </span>
             </div>
             <div class="col-12 col-md-8">
                 <app-search-product></app-search-product>
             </div>
-            <div class="col-12 col-md-2 pr-0 align-right">
-                <div class="cart" [ngClass]="{ show: viewCart }">
-                    <app-cart></app-cart>
-                </div>
-                <span class="navbar-cart" style="font-size: 20px; cursor: pointer;" (click)="toCartShop()">
+            <div class="col-12 col-md-2 pr-0 align-right button-home-large">
+                <span class="navbar-cart responsive-none" style="font-size: 20px; cursor: pointer;" (click)="toCartShop()">
                     <div class="navbar-cart-items" *ngIf="(myCart$ | async)?.length">
                         <p>{{ (myCart$ | async)?.length }}</p>
                     </div>
@@ -33,7 +41,4 @@
             </div>
         </div>
     </div>
-</div>
-<div class="cart" [ngClass]="{ show: viewCart }">
-    <app-cart></app-cart>
 </div>

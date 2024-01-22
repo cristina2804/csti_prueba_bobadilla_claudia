@@ -80,3 +80,28 @@
         }
     }
 }
+
+.responsive-none {
+    display: block;
+}
+
+.responsive-block {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .responsive-none {
+        display: none;
+    }
+    
+    .responsive-block {
+        display: block;
+    }
+}
+
+.navbar-message {
+    background-color: $secondary;
+    span {
+        color: $gray4;
+    }
+}

@@ -9,7 +9,7 @@
                 </span>
             </div>
             <div class="col-md align-right">
-                <button class="button button--medium button--blue button--secondary button-catalogo"
+                <button class="button button--medium button--blue button--secondary button-catalogo responsive-none"
                     type="button" (click)="toCatalog()">
                     <span class="button__text">
                         <span>Ver Catálogo</span>
@@ -21,6 +21,14 @@
             <ng-container *ngFor="let producto of productos">
                 <app-product-card [producto]="producto" [attr.data-perview]="dataPerview"></app-product-card>
             </ng-container>
+            <div class="col-md align-right">
+                <button class="button button--medium button--blue button--secondary button-catalogo responsive-block"
+                    type="button" (click)="toCatalog()">
+                    <span class="button__text">
+                        <span>Ver Catálogo</span>
+                    </span>
+                </button>
+            </div>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Producto } from 'src/app/interfaces/producto.interface';
 import { ApiService } from 'src/app/services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { ProductCardComponent } from '../home/product-card/product-card.component';
 import { StoreService } from 'src/app/services/store.service';
@@ -21,8 +21,9 @@ export class ProductDetailsComponent implements OnInit {
   keyItem: string;
   imagenSelected: string;
   dataPerview:number = 4;
+  showError: boolean = false;
 
-  constructor(private apiService: ApiService, private storeService: StoreService, private route: ActivatedRoute) { }
+  constructor(private apiService: ApiService, private storeService: StoreService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     // this.keyItem = this.route.snapshot.paramMap.get('product');
@@ -40,14 +41,18 @@ export class ProductDetailsComponent implements OnInit {
   getProduct() {
     this.apiService.getProducto(this.keyItem).subscribe((data: any) => {
       if (data) {
+        this.showError = false;
         this.producto = { ...data, imagenOportunidad: '/ficha-tecnica/' + data.imagenes[0], cantidad: 1 };
         console.log(this.producto);
         this.cantidadesProducto = Array.from({ length: data.stockDisponible }, (_, index) => index + 1);
         this.imagenSelected = data.imagenes.length > 0 ? data.imagenes[0] : null;
+      } else {
+        this.showError = true;
       }
     },
     error => {
       this.producto = null;
+      this.showError = true;
       console.error(error, 'errror generado');
     })
   }
@@ -87,8 +92,9 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
   
-  addCart(producto) {
+  addCart(producto, redirect) {
     this.storeService.addProduct(producto);
+    this.router.navigate(['/cart-shop']);
   }
 
 }

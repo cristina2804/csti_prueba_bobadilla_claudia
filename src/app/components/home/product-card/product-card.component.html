@@ -20,7 +20,7 @@
     </div>
     <div class="card-product-footer pt-0" *ngIf="showButton">
         <div class="buttons d-flex justify-content-between">
-            <button type="button" class="btn btn-outline-primary btn-lg">
+            <button type="button" class="btn btn-outline-primary btn-lg" (click)="addProduct($event, producto)">
                 <i class="fas fa-shopping-cart"></i>
             </button>
             <button class="btn btn-primary btn-lg btn-view" type="submit">Ver Producto</button>

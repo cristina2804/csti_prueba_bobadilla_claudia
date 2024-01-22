@@ -1,3 +1,11 @@
+<div class="container pt-4" *ngIf="showError">
+    Actualmente se está usando un mock por lo que solo esta disponible la visualización de los siguientes productos: <br>
+    <ul>
+        <li><a href="/product/juego-de-ollas-herscher-dorado-electrico-oster-08515456649">Juego de Ollas Herscher Dorado eléctrico Oster</a><br></li>
+        <li><a href="/product/luigi-bosca-malbec-reserva-x-750-ml--120164141">Luigi bosca malbec reserva x 750 ml.</a></li>
+    </ul>
+
+</div>
 <div class="container pt-4" *ngIf="producto">
     <div class="row">
         <div class="product-details col-sm-12 col-md-8">
@@ -55,7 +63,10 @@
                             </button>
                         </div>
                         <div class="align-right">
-                            <button class="btn btn-primary btn-lg" type="submit">Canjear</button>
+                            <button class="btn btn-primary btn-lg" type="submit"
+                            (click)="addCart(producto, true)">
+                                Canjear
+                            </button>
                         </div>
                     </div>
                 </div>
